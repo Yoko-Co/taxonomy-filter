@@ -8,13 +8,13 @@ require_once( 'taxonomy-filter-constants.php' );
 function taxonomy_filter_terms_add_form_fields() {
 	wp_nonce_field( basename( __FILE__ ), TFP_TERMS_NONCE );
 	?>
-    <div class="form-field terms-tfp-wrap term-row-head"><?php _e( 'Taxonomy filter options', TFP_PREFIX ) ?></div>
-    <div class="form-field terms-tfp-wrap">
-        <label for="<?php echo TFP_TERMS_FIELD_HIDDEN ?>"><?php _e( 'Hidden in filters', TFP_PREFIX ) ?></label>&nbsp;
-        <input type="checkbox" name="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" id="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" value="1" class="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" />
-        <p><?php _e( 'Set if you want to hide term in taxonomy filters.', TFP_PREFIX ) ?></p>
-    </div>
-    <br />
+	<div class="form-field terms-tfp-wrap term-row-head"><?php _e( 'Taxonomy Filter options', TFP_PREFIX ) ?></div>
+	<div class="form-field terms-tfp-wrap">
+		<label for="<?php echo TFP_TERMS_FIELD_HIDDEN ?>"><?php _e( 'Hidden in filters', TFP_PREFIX ) ?></label>&nbsp;
+		<input type="checkbox" name="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" id="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" value="1" class="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" />
+		<p><?php _e( 'Set if you want to hide term in taxonomy filters.', TFP_PREFIX ) ?></p>
+	</div>
+	<br />
 	<?php
 }
 
@@ -25,19 +25,19 @@ function taxonomy_filter_terms_add_form_fields() {
  */
 function taxonomy_filter_terms_edit_form_fields( $term ) {
 	$tfp_field_hidden = taxonomy_filter_terms_meta_get_hidden( $term->term_id );
-    ?>
+	?>
 	<?php wp_nonce_field( basename( __FILE__ ), TFP_TERMS_NONCE ) ?>
 
-    <tr class="form-field terms-tfp-wrap">
-        <th scope="row" colspan="2" class="term-row-head"><?php _e( 'Taxonomy filter options', TFP_PREFIX ) ?></th>
-    </tr>
-    <tr class="form-field terms-tfp-wrap">
-        <th scope="row"><label for="<?php echo TFP_TERMS_FIELD_HIDDEN ?>"><?php _e( 'Hidden in filters', TFP_PREFIX ) ?></label></th>
-        <td>
-            <input type="checkbox" name="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" id="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" value="1" <?php echo ( $tfp_field_hidden == 1 ) ? 'checked="checked"' : '' ?> class="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" />
-            <p class="description"><?php _e( 'Set if you want to hide term in taxonomy filters.', TFP_PREFIX ) ?></p>
-        </td>
-    </tr>
+	<tr class="form-field terms-tfp-wrap">
+		<th scope="row" colspan="2" class="term-row-head"><?php _e( 'Taxonomy Filter options', TFP_PREFIX ) ?></th>
+	</tr>
+	<tr class="form-field terms-tfp-wrap">
+		<th scope="row"><label for="<?php echo TFP_TERMS_FIELD_HIDDEN ?>"><?php _e( 'Hidden in filters', TFP_PREFIX ) ?></label></th>
+		<td>
+			<input type="checkbox" name="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" id="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" value="1" <?php echo ( $tfp_field_hidden == 1 ) ? 'checked="checked"' : '' ?> class="<?php echo TFP_TERMS_FIELD_HIDDEN ?>" />
+			<p class="description"><?php _e( 'Set if you want to hide term in taxonomy filters.', TFP_PREFIX ) ?></p>
+		</td>
+	</tr>
 	<?php
 }
 

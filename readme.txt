@@ -1,21 +1,21 @@
-=== Taxonomy filter ===
-Contributors: lando1982
+=== Taxonomy Filter ===
+Contributors: lando1982, bookchiq
 Tags: usability, filter, admin, category, tag, term, taxonomy, hierarchy, organize, manage
 Requires at least: 4.0
 Tested up to: 5.9
-Stable tag: 2.2.9
+Stable tag: 2.2.10-yoko
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
-Taxonomy filter is a plugin which allow users to filter hierarchical taxonomy terms inside admin pages and provides a way to hide terms for each user
+Taxonomy Filter is a plugin which allow users to filter hierarchical taxonomy terms inside admin pages and provides a way to hide terms for each user
 
 == Description ==
 
-Taxonomy filter is a simple and flexible plugin which allow users to filter hierarchical term taxonomies inside admin pages. If you need to simplify your tags and categories research on admin pages, this plugin will make it easier for you. It adds a custom input field (only for configured taxonomies) that you can use to filter a every taxonomy list.
+Taxonomy Filter is a simple and flexible plugin which allow users to filter hierarchical term taxonomies inside admin pages. If you need to simplify your tags and categories research on admin pages, this plugin will make it easier for you. It adds a custom input field (only for configured taxonomies) that you can use to filter a every taxonomy list.
 
-Imagine having too many tags on your post admin page and having to lose so much time scrolling a long list of items or having to search for a tag with the classic browser search box. With "Taxonomy filter" plugin you can search, choice and select tags in a very short time, a great gain!
+Imagine having too many tags on your post admin page and having to lose so much time scrolling a long list of items or having to search for a tag with the classic browser search box. With "Taxonomy Filter" plugin you can search, choice and select tags in a very short time, a great gain!
 
-In addition, you have to setup which taxonomies should have "Taxonomy filter" activated. When you install and activate the plugin, an admin page is added on settings section. In this page are automatically listed all valid taxonomies, you have two options:
+In addition, you have to setup which taxonomies should have "Taxonomy Filter" activated. When you install and activate the plugin, an admin page is added on settings section. In this page are automatically listed all valid taxonomies, you have two options:
 
 * enable on post management pages (allow you to turn on/off filter field)
 * hide filter field if taxonomy is empty

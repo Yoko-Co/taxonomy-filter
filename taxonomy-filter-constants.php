@@ -1,7 +1,7 @@
 <?php
 /***************************************************
  DEFINITION AND CONSTANTS
- ***************************************************/
+**/
 
 define( 'TFP_VERSION', '2.2.9' );
 define( 'TFP_PREFIX', 'taxonomy_filter' );
