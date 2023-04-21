@@ -208,13 +208,26 @@ function taxonomy_filter_add_boxes() {
 					}
 				});
 
-                // Append filter input to taxonomy postbox
-                jQuery('<?php echo ".post-php #taxonomy-".$taxonomy->slug ?>, <?php echo ".post-new-php #taxonomy-".$taxonomy->slug ?>').prepend('' +
-                    '<label for="<?php echo TFP_PREFIX."_value_".$taxonomy->slug ?>"><?php _e('Filter', TFP_PREFIX);?>:</label>&nbsp;' +
-                    '<input type="text" id="<?php echo TFP_PREFIX."_value_".$taxonomy->slug ?>" name="<?php echo TFP_PREFIX."_value_".$taxonomy->slug ?>" class="<?php echo TFP_PREFIX."_value" ?>" autocomplete="off"/>&nbsp;' +
-                    '<input type="button" value="reset" id="<?php echo TFP_PREFIX."_reset_".$taxonomy->slug ?>" name="<?php echo TFP_PREFIX."_reset_".$taxonomy->slug ?>" class="bubble-float-left <?php echo TFP_PREFIX."_reset" ?>"/>' +
-                    '<p class="tips"><i><?php _e('Use the above field to apply filter', TFP_PREFIX);?></i></p>'
-                );
+				// Recursive function to show or hide items based on search results
+				function handleNestedItems(item, show) {
+					if (show) {
+						item.show();
+					} else {
+						item.hide();
+					}
+
+					item.children("ul.children").children("li").each(function () {
+						handleNestedItems(jQuery(this), show);
+					});
+				}
+
+				// Append filter input to taxonomy postbox
+				jQuery('<?php echo ".post-php #taxonomy-".$taxonomy->slug ?>, <?php echo ".post-new-php #taxonomy-".$taxonomy->slug; ?>').prepend('' +
+					'<label for="<?php echo TFP_PREFIX."_value_".$taxonomy->slug ?>"><?php _e('Filter', TFP_PREFIX);?>:</label>&nbsp;' +
+					'<input type="text" id="<?php echo TFP_PREFIX."_value_".$taxonomy->slug ?>" name="<?php echo TFP_PREFIX."_value_".$taxonomy->slug ?>" class="<?php echo TFP_PREFIX."_value" ?>" autocomplete="off"/>&nbsp;' +
+					'<input type="button" value="reset" id="<?php echo TFP_PREFIX."_reset_".$taxonomy->slug ?>" name="<?php echo TFP_PREFIX."_reset_".$taxonomy->slug ?>" class="bubble-float-left <?php echo TFP_PREFIX."_reset" ?>"/>' +
+					'<p class="tips"><i><?php _e('Use the above field to apply filter', TFP_PREFIX);?></i></p>'
+				);
 
 				// Input value KeyUp event management
 				jQuery('<?php echo '#' . TFP_PREFIX . '_value_' . $taxonomy->slug; ?>').keyup(function () {
@@ -235,7 +248,7 @@ function taxonomy_filter_add_boxes() {
 
 						if (filter_item.text().toLowerCase().indexOf(filter_value.toLowerCase()) > -1) {
 							// Show checkbox if text matches the filter value
-                            filter_li.show();
+							handleNestedItems(filter_li, true);
 							// Add "filter-exists" class to identify valid filtered items
 							filter_li.addClass("filter-exists");
 							// Add class to all parent UL if at least a valid filtered item exists
@@ -247,11 +260,11 @@ function taxonomy_filter_add_boxes() {
 						// Hide items without children or show previously hidden items (now valid)
 						if (jQuery(this).children("ul.children.filter-exists").length === 0 && jQuery(this).parent("ul.children").parent("li.filter-exists").length === 0) {
 							// Hide items (without a child with class "filter-exists" or without a parent with class "filter-exists")
-                            jQuery(this).hide();
+							handleNestedItems(jQuery(this), false);
 						}
 						else {
 							// Show items (with at least a child with class "filter-exists")
-                            jQuery(this).show();
+							handleNestedItems(jQuery(this), true);
 						}
 					});
 				});
